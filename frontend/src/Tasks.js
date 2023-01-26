@@ -8,6 +8,8 @@ import initialTasks from './InitialTasks';
 
 function Tasks() {
   const [tasks, setTasks] = useState(initialTasks);
+  const [filter, setFilter] = useState("everything");
+
 
   const TODO_BASE_URL = 'http://localhost:3000/todos';
 
@@ -80,11 +82,31 @@ function Tasks() {
     })
   }
 
+  const onUnitChange = (e) => {
+    console.log('changed', e.target.value)
+    setFilter(e.target.value)
+  }
+
   return (
     <>
       <div className="Tasks">
-        <h1>Tasks</h1>
+      <h1>Tasks</h1> 
+      <hr></hr>
+
+      <label for="unit-select">Choose a unit: </label>
+    
+
+        <select name="math" id="unit-select" onChange={onUnitChange}>
+          <option value="everything">Everything</option>
+
+          <option value="notcompleted">Not Completed</option>
+          <option value="completed">Completed</option>
+
+
+        </select>
+        
         <table>
+
           <thead>
             <tr>
               <th>Todo ID</th>
@@ -95,10 +117,31 @@ function Tasks() {
           </thead>
 
           <tbody>
-            {tasks.map((todo) => {
+            {tasks.filter(todo => {
+              if (filter === 'everything') {
+                return true;
+              }
+
+              if (filter === 'notcompleted' && todo.completed == false) {
+                return true;
+              }
+
+              if (filter === 'completed' && todo.completed == true) {
+                return true;
+              }
+
+
+
+
+
+              return false;
+            }).map((todo) => {
               return <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo} setTodoCompleted={setTodoCompleted} />
             })}
           </tbody>
+        </table>
+        <table>
+          
         </table>
       </div>
 
