@@ -91,18 +91,14 @@ function Tasks() {
     <>
       <div className="Tasks">
         <h1>Tasks</h1>
-        <hr></hr>
+        
 
         <label for="unit-select">Choose a unit: </label>
 
-
         <select name="math" id="unit-select" onChange={onUnitChange}>
           <option value="everything">Everything</option>
-
           <option value="notcompleted">Not Completed</option>
           <option value="completed">Completed</option>
-
-
         </select>
 
         <table>
@@ -115,7 +111,6 @@ function Tasks() {
               <th>Actions</th>
             </tr>
           </thead>
-
           <tbody>
             {tasks.filter(todo => {
               if (filter === 'everything') {
@@ -130,18 +125,11 @@ function Tasks() {
                 return true;
               }
 
-
-
-
-
               return false;
             }).map((todo) => {
               return <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo} setTodoCompleted={setTodoCompleted} />
             })}
           </tbody>
-        </table>
-        <table>
-
         </table>
       </div>
 
