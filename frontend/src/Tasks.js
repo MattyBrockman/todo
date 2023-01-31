@@ -90,11 +90,11 @@ function Tasks() {
   return (
     <>
       <div className="Tasks">
-      <h1>Tasks</h1> 
-      <hr></hr>
+        <h1>Tasks</h1>
+        <hr></hr>
 
-      <label for="unit-select">Choose a unit: </label>
-    
+        <label for="unit-select">Choose a unit: </label>
+
 
         <select name="math" id="unit-select" onChange={onUnitChange}>
           <option value="everything">Everything</option>
@@ -104,7 +104,7 @@ function Tasks() {
 
 
         </select>
-        
+
         <table>
 
           <thead>
@@ -141,7 +141,7 @@ function Tasks() {
           </tbody>
         </table>
         <table>
-          
+
         </table>
       </div>
 
